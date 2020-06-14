@@ -27,3 +27,8 @@ if [ "$SPARKNODE" = "SLAVE" ]; then
     tail -f /spark/logs/spark--org.apache.spark.deploy.worker.Worker-1-$HOST_NAME.out
 fi
 ```
+
+## start up docker compose
+```
+docker-compose up -f ./compose/docker-compose.yml
+```

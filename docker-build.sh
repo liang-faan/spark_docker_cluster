@@ -1,0 +1,1 @@
+docker build . -t liangfaan/spark:2.4.6

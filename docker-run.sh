@@ -1,0 +1,1 @@
+docker run -d --hostname sparkmaster -p 8080:8080 -p 7077:7077 liangfaan/spark:2.4.6

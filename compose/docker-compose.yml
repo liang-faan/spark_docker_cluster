@@ -1,0 +1,52 @@
+version: "3.7"
+services: 
+    master: 
+        image: liangfaan/spark-compose:${SPARK_IMAGE_TAG}
+        hostname: ${SPARK_MASTER_HOSTNAME}
+        ports: 
+            - 8080:8080
+            - 7077:7077
+        environment: 
+            #- -hostname=${SPARK_MASTER_HOSTNAME}
+            - SPARKNODE=MASTER
+            - HOST_NAME=${SPARK_MASTER_HOSTNAME}
+            
+    workernode1:
+        image: liangfaan/spark-compose:${SPARK_IMAGE_TAG}
+        hostname: ${SPARK_SLAVE1_HOSTNAME}
+        ports: 
+            #- 8080:8080
+            #- 7077:7077
+            - 8081:8081
+        environment:
+            #- -hostname=${SPARK_SLAVE1_HOSTNAME}
+            - SPARKNODE=SLAVE
+            #- sparkmasterUrl=spark://${SPARK_MASTER_HOSTNAME}:/7077
+            - HOST_NAME=${SPARK_SLAVE1_HOSTNAME}
+            - MASTER_HOST_NAME=${SPARK_MASTER_HOSTNAME}
+            - WEBUIPORT=8081
+        depends_on:
+            - master
+        links:
+            - "master:${SPARK_MASTER_HOSTNAME}"
+            #- "${SPARK_MASTER_HOSTNAME}"
+
+    workernode2:
+        image: liangfaan/spark-compose:${SPARK_IMAGE_TAG}
+        hostname: ${SPARK_SLAVE2_HOSTNAME}
+        ports: 
+            #- 8080:8080
+            #- 7077:7077
+            - 8082:8082
+        environment:
+            #- -hostname=${SPARK_SLAVE2_HOSTNAME}
+            - SPARKNODE=SLAVE
+            #- sparkmasterUrl=spark://${SPARK_MASTER_HOSTNAME}:/7077
+            - HOST_NAME=${SPARK_SLAVE2_HOSTNAME}
+            - MASTER_HOST_NAME=${SPARK_MASTER_HOSTNAME}
+            - WEBUIPORT=8082
+        depends_on:
+            - master
+        links:
+            - "master:${SPARK_MASTER_HOSTNAME}"
+            #- "${SPARK_MASTER_HOSTNAME}"

@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: liangfaansparkdockercluster 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: liangfaansparkdockercluster 
+    spec:
+      containers:
+        - name: liangfaansparkdockercluster 
+          image: sparkaksacr.azurecr.io/liangfaansparkdockercluster
+          ports:
+          - containerPort: 80

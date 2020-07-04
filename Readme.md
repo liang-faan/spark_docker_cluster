@@ -30,5 +30,6 @@ fi
 
 ## start up docker compose
 ```
-docker-compose up -f ./compose/docker-compose.yml
+cd ./compose
+docker-compose up
 ```

@@ -41,6 +41,11 @@
 # service zookeeper restart
 ```
 
+# Monitory zookeeper logs
+```
+tail -f /var/log/zookeeper/zookeeper.log
+```
+
 # Mesos configuration
 
 ```

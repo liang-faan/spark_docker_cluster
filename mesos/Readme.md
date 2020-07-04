@@ -70,7 +70,8 @@ echo zooslave2 | sudo tee slaves
 
 export MESOS_log_dir=/var/log/mesos/
 export MESOS_work_dir=/var/data/mesos/
-export MESOS_ZK=zk://zoomaster:2181,zooslave1:2181,zooslave2:2181/mesos
+#export MESOS_ZK=zk://zoomaster:2181,zooslave1:2181,zooslave2:2181/mesos
+export MESOS_ZK=zk://zoomaster:2181/mesos
 export MESOS_quorum=1
 ```
 
